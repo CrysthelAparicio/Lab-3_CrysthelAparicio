@@ -13,6 +13,7 @@ using std::string;
 using std::endl;
 
 void MergeSort(int*,int,int);
+void mentesMaestras();
 
 int main()
 {
@@ -29,7 +30,7 @@ int main()
                 switch (opcion)
                 {
                         case 1:
-			                                
+			mentesMaestras();			                                
                                 break;
                         case 2:
                                 
@@ -53,7 +54,7 @@ int main()
         // Imprimiendo el elemento sorteado!
         cout<<"\nSorted Data ";
         for (i = 0; i < n; i++)
-        cout<<"->"<<arr[i];
+        cout<<" -> "<< arr[i];
 
         return 0;
 
@@ -142,10 +143,63 @@ void MergeSort(int *a, int low, int high)
 //////////////////////////////////////////
 
 //EJERCICIO 1
+void mentesMaestras(){
+        srand(time(NULL));
+        int random = 10000+rand()%(99999-10000);
+        int contadorTurnos = 5;
+        string cadenaRand = to_string(random);
+        string subcadenaingresada1;
+        string numero;
+        int contIguales = 0;
+        cout<<"Numero Random: "<<cadenaRand<<endl;
 
+        while(contadorTurnos!=0){
+                cout<<"Tiene "<<contadorTurnos<<" oportunidades par adivinar el numero"<<endl;
+                cout<<"Escriba lo que desea modificar: "<<endl;
+                cin>>numero;
+                while(numero.length()<5){
+                        cout<<"Ingrese un numero de 5 digitos: "<<endl;
+                        cin>>numero;
+                }
 
-
+                if(numero.compare(cadenaRand)==0){
+                        cout<<"Adivino todos los numeros! "<<endl;
+                        contadorTurnos = 0;
+                }else{
+                        for(int i=0; i<cadenaRand.length();i++){
+                                for(int j=0; j<numero.length();i++){
+                           /*   if(){
+                                contIguales++;
+                                }*/
+                                }
+                        }
+                        cout<<"Tiene "<<contIguales<<" numeros iguales"<<endl;
+                        c
+                }
+                contadorTurnos--;
+        }
+  }
 
 //EJERCICIO 2
+
+void factorizacion() 
+	{
+		string ch;
+		int pos = 0, cont=0;
+		string a,b,c;
+		int A,B,C;
+		cout << "Ingrese el Polinomio: "<<endl;
+		cin>>ch;
+
+		for(int i = 0; i < ch.length; i++){
+			if((ch[i] == 'x') && (cont == 0)){
+			
+		} 
+	}
+		
+	
+	}
+
+/////////////
 
 
