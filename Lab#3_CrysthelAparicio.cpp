@@ -12,8 +12,14 @@ using std::cin;
 using std::string;
 using std::endl;
 
+int* crearArray(int);
+int* leerElementos(int*,int);
+void printArray(int*,int);
+void metodo(); //lo hace random
 void MergeSort(int*,int,int);
-void mentesMaestras();
+void juego();
+void factorizacion();
+void e1();
 
 int main()
 {
@@ -30,9 +36,10 @@ int main()
                 switch (opcion)
                 {
                         case 1:
-			mentesMaestras();			                                
+			juego();			                                
                                 break;
                         case 2:
+			factorizacion();
                                 
                                 break;
                         case 3:
@@ -141,65 +148,144 @@ void MergeSort(int *a, int low, int high)
 }
 
 //////////////////////////////////////////
+ int* crearArray(int size){
+        int* retvalue=new int [size];
+        return retvalue;
+}
+int* leerElementos(int* array,int size){
+        int num, c;
+    srand(time(NULL));
 
-//EJERCICIO 1
-void mentesMaestras(){
-        srand(time(NULL));
-        int random = 10000+rand()%(99999-10000);
-        int contadorTurnos = 5;
-        string cadenaRand = to_string(random);
-        string subcadenaingresada1;
-        string numero;
-        int contIguales = 0;
-        cout<<"Numero Random: "<<cadenaRand<<endl;
+    for(c = 1; c <= size; c++)
+    {
+        num = 1 + rand() % (10 - 1);
+        array[c]=num;
+    }
+    return array;
+}
 
-        while(contadorTurnos!=0){
-                cout<<"Tiene "<<contadorTurnos<<" oportunidades par adivinar el numero"<<endl;
-                cout<<"Escriba lo que desea modificar: "<<endl;
-                cin>>numero;
-                while(numero.length()<5){
-                        cout<<"Ingrese un numero de 5 digitos: "<<endl;
-                        cin>>numero;
-                }
 
-                if(numero.compare(cadenaRand)==0){
-                        cout<<"Adivino todos los numeros! "<<endl;
-                        contadorTurnos = 0;
-                }else{
-                        for(int i=0; i<cadenaRand.length();i++){
-                                for(int j=0; j<numero.length();i++){
-                           /*   if(){
-                                contIguales++;
-                                }*/
-                                }
-                        }
-                        cout<<"Tiene "<<contIguales<<" numeros iguales"<<endl;
-                        c
-                }
-                contadorTurnos--;
+void printArray(int* array, int size){
+        for (int i=0;i<size;i++){
+
+        cout<<" "<<array[i];
         }
-  }
+        cout<<endl;
+}
 
-//EJERCICIO 2
+	 void metodo(){
+	 int* arrayMerge;
 
-void factorizacion() 
-	{
-		string ch;
-		int pos = 0, cont=0;
-		string a,b,c;
-		int A,B,C;
-		cout << "Ingrese el Polinomio: "<<endl;
-		cin>>ch;
+	 arrayMerge= crearArray(size);
+	printArray = leerElementos(array,size);
+ }
+//EJERCICIO 1
+ void e1(){
 
-		for(int i = 0; i < ch.length; i++){
-			if((ch[i] == 'x') && (cont == 0)){
-			
-		} 
-	}
-		
-	
-	}
+int* array_p;
+int size=5;
 
-/////////////
 
+array_p=crearArray(size);
+
+array_p=leerElementos(array_p,size);
+
+printArray(array_p,size);
+int cont=0;
+string cadena;
+while(cont<=5){
+        cout<<"Su turno "<<cont<<endl;
+        cout<<"Ingrese la cadena de numeros:"<<endl;
+        cin>>cadena;
+        int size_cadena=cadena.length();
+
+        while(size_cadena!=5){
+        cout<<"MAl, ingrese de nuevo"<<endl;
+        cin>>cadena;
+        size_cadena=cadena.length();
+        }
+
+
+        cont++;
+        int opcion=juego(array_p,cadena);
+
+}
+
+
+
+}
+
+int juego(int* array, string cadena){
+        int temp2,temp1;
+        char x,z;
+        string tempo;
+        int cont=0;
+
+        for(int i=0;i<=5;i++){
+                temp1=array[i];
+
+                for(int y=0;y<=cadena.length();y++){
+                        tempo=cadena[y];
+                        temp2=atoi(tempo.c_str());
+
+
+                        if(temp2==temp1){
+                                cont++;
+                        }
+
+                }
+        }
+        cout<<"Felicidades estos coinciden "<< cont-1<<" digitos"<<endl;
+
+
+return 0;
+}
+
+
+             
+
+///////////////////////////////////////7
+// EJERCICIO 2
+	void factorizacion() {
+        string cadena;
+        string a,b,c;
+	int A,B,C;
+        int pos = 0 ,cont = 0;
+        int pos2 = 0;
+        cout<<"Ingrese el Polinomio que desea ver: "<<endl;
+        cin>>cadena;
+
+        for(int i = 0; i < cadena.length(); i++) {
+                if((cadena[i] == 'x') && (cont == 0)){
+                                pos = i;
+
+                                cont++;
+                }
+
+                if ((cadena[i] == 'x') && (cont == 1)) {
+                        pos2 = i;
+
+                        cont++;
+                }
+
+        }
+
+        for(int i = 0; i < pos; i++) {
+
+                a += cadena[i];
+        }
+
+        for(int i = 0; i < pos2; i++) {
+
+                b += cadena[i];
+        }
+
+        for(int i = pos2; i < cadena.length(); i++) {
+
+                c += cadena[i];
+        }
+
+        cout<<a<<endl;
+
+}
 
